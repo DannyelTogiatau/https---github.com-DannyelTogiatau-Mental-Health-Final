@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighthouse Project | Youth Wellbeing & Support</title>
+    <style>
+        :root {
+            --outer-orange: #FF9900;       
+            --inner-yellow: #FFCC00;    
+            --panel-gold: #EA9900;       
+            --font-color: #261600;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Rounded MT Bold', 'Comic Sans MS', sans-serif;
+            color: var(--font-color);
+        }
+
+        body {
+            background-color: var(--outer-orange);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    
+        .website-frame {
+            width: 100%;
+            min-height: calc(100vh - 40px);
+            background-color: var(--inner-yellow);
+            border-radius: 35px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: 1fr auto;
+            gap: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-column {
+            grid-column: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 5px;
+        }
+
+        .logo-block h1 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #261600; 
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+        }
+
+        .navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .nav-button {
+            background-color: var(--inner-yellow);
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-align: left;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .nav-button:hover, .nav-button.active {
+            background-color: var(--panel-gold);
+        }
+
+        .sidebar-image-placeholder {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            flex-grow: 1;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-image-placeholder span {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .right-column {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .quote-bar {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 18px 25px;
+            text-align: center;
+            font-size: 1.35rem;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .views-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+     
+        .page-view {
+            display: none !important;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .page-view.active {
+            display: flex !important;
+        }
+
+        .banner-block {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .banner-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .helpline-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .action-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 0 10px;
+        }
+
+        .action-link {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: var(--inner-yellow);
+            padding: 15px 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .action-link:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .bottom-cards-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .left-info-card {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 25px 30px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .left-info-card ul {
+            padding-left: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: normal;
+        }
+
+        .right-info-card {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 25px 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .card-text {
+            flex: 1;
+            font-size: 1.25rem;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .card-text p {
+            font-weight: normal;
+            font-size: 1.05rem;
+            margin-top: 10px;
+        }
+
+        .card-image-placeholder {
+            background-color: var(--inner-yellow);
+            border-radius: 20px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .standard-page {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 35px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .standard-page h2 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+
+        .code-zone {
+            background-color: var(--inner-yellow);
+            border-radius: 20px;
+            padding: 30px;
+            flex: 1;
+            border: 2px dashed var(--font-color);
+        }
+
+       
+        .breathing-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .breath-circle {
+            width: 160px;
+            height: 160px;
+            background-color: var(--panel-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin: 25px 0;
+            transition: transform 4s ease-in-out;
+        }
+
+        .breath-circle.expand {
+            transform: scale(1.5);
+        }
+
+        .breath-circle.hold {
+            transform: scale(1.5);
+        }
+
+        .breath-btn {
+            background-color: var(--panel-gold);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-box {
+            background-color: var(--panel-gold);
+            padding: 20px;
+            border-radius: 18px;
+        }
+
+        .info-box h4 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-list li {
+            background-color: var(--panel-gold);
+            margin-bottom: 15px;
+            padding: 16px 22px;
+            border-radius: 18px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .contact-list span {
+            display: block;
+            font-weight: normal;
+            font-size: 1rem;
+            margin-top: 6px;
+        }
+
+        .footer-row {
+            grid-column: 1 / 3;
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 18px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+       
+        @media (max-width: 900px) {
+            .website-frame {
+                grid-template-columns: 1fr;
+            }
+            .left-column, .right-column, .footer-row {
+                grid-column: 1;
+            }
+            .bottom-cards-row, .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="website-frame">
+        
+        <aside class="left-column">
+            <div class="logo-block">
+                <span class="logo-icon">🌅</span>
+                <h1>Lighthouse Project</h1>
+            </div>
+            
+            <nav class="navigation">
+                <button class="nav-button active" onclick="showPage('home', this)">Home</button>
+                <button class="nav-button" onclick="showPage('breathing', this)">Breathing Exercises</button>
+                <button class="nav-button" onclick="showPage('after-school', this)">Life After School</button>
+                <button class="nav-button" onclick="showPage('get-help', this)">Get Help Now</button>
+                <button class="nav-button" onclick="showPage('privacy', this)">Privacy Conditions</button>
+            </nav>
+
+            <div class="sidebar-image-placeholder">
+                <span>👌</span>
+                <p>Thinking of sum to add here</p>
+            </div>
+        </aside>
+
+        <main class="right-column">
+            
+            <div class="quote-bar">
+                "I will add quote here soon, just thinking of sum"
+            </div>
+
+            <div class="views-container">
+                
+              
+                <section id="view-home" class="page-view active">
+                    <div class="banner-block">
+                        <h2 class="banner-title">You Are Not Alone</h2>
+                        <p class="helpline-text">Free 24/7 Support: Call or Text <strong>1737</strong></p>
+                        
+                        <div class="action-links">
+                            <a href="tel:1737" class="action-link">📞 Tap to Call</a>
+                            <a href="sms:1737" class="action-link">💬 Tap to Text</a>
+                        </div>
+                    </div>
+
+                    <div class="bottom-cards-row">
+                        <div class="left-info-card">
+                            <h3>Did You Know?</h3>
+                            <ul>
+                                <li>1 in 5 young adults experience mental health struggles.</li>
+                                <li>Taking 5 deep breaths can instantly lower cortisol levels.</li>
+                                <li>Reaching out for help is a sign of resilience, not weakness.</li>
+                            </ul>
+                        </div>
+                        <div class="right-info-card">
+                            <div class="card-text">
+                                Safe Space & Guidance
+                                <p>The Lighthouse Project provides practical mental health tools, crisis contacts, and life advice for young people transitioning through school and beyond.</p>
+                            </div>
+                            <div class="card-image-placeholder">
+                                💡
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="view-breathing" class="page-view standard-page">
+                    <h2>Breathing Exercises</h2>
+                    <div class="code-zone">
+                        <div class="breathing-box">
+                            <h3>Box Breathing (4-4-4 Technique)</h3>
+                            <p>Follow the circle to slow down your heart rate and ease anxiety.</p>
+                            <div class="breath-circle" id="breathCircle">Ready</div>
+                            <button class="breath-btn" onclick="toggleBreathing()">Start Exercise</button>
+                        </div>
+                    </div>
+                </section>
+
+             
+                <section id="view-after-school" class="page-view standard-page">
+                    <h2>Life After School</h2>
+                    <div class="code-zone">
+                        <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.1rem;">Navigating the next chapter after graduation can feel overwhelming. Here are key areas to focus on:</p>
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <h4>🎓 Career & Study</h4>
+                                <p>Whether university, trade apprenticeship, or entering the workforce, explore options that match your passions—not just expectations.</p>
+                            </div>
+                            <div class="info-box">
+                                <h4>💰 Financial Basics</h4>
+                                <p>Learn budgeting basics early. Track income, manage student loans, and set up a small emergency savings pot.</p>
+                            </div>
+                            <div class="info-box">
+                                <h4>🧘 Managing Burnout</h4>
+                                <p>Taking a gap year or working part-time is okay. Life isn't a race—build habits that prioritize your wellbeing.</p>
+                            </div>
+                            <div class="info-box">
+                                <h4>🤝 Building Community</h4>
+                                <p>Leaving school means friend groups change. Join clubs, volunteer, or take up sports to stay connected with new people.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+             
+                <section id="view-get-help" class="page-view standard-page">
+                    <h2>Get Help Now</h2>
+                    <div class="code-zone">
+                        <p style="margin-bottom: 15px; font-size: 1.1rem;">If you or someone you know needs immediate assistance, contact these confidential services:</p>
+                        <ul class="contact-list">
+                            <li>
+                                🚨 Emergency Services: Call 111 (NZ) / 911 (US) / 000 (AU)
+                                <span>For immediate danger or life-threatening situations.</span>
+                            </li>
+                            <li>
+                                📞 Need to Talk? Call or Text 1737
+                                <span>Free, confidential 24/7 support with trained counselors.</span>
+                            </li>
+                            <li>
+                                💬 Youthline: Call 0800 376 633 or Text 234
+                                <span>Dedicated youth-focused support service (8am - midnight).</span>
+                            </li>
+                            <li>
+                                🌈 Rainbow Youth: (09) 376 4155
+                                <span>Support for LGBTQIA+ youth and their families.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+               
+                <section id="view-privacy" class="page-view standard-page">
+                    <h2>Privacy Conditions</h2>
+                    <div class="code-zone">
+                        <h3 style="font-size: 1.3rem;">Your Safety & Data Protection</h3>
+                        <p style="margin-top: 10px; line-height: 1.6; font-size: 1.05rem;">
+                            The Lighthouse Project values your trust and privacy. 
+                        </p>
+                        <ul style="margin: 15px 0 0 20px; line-height: 1.8; font-size: 1.05rem;">
+                            <li><strong>Anonymity:</strong> Browsing this website does not store personal identification or medical data.</li>
+                            <li><strong>External Links:</strong> Clicking helpline numbers or crisis text options routes directly through your device's native phone or messaging app.</li>
+                            <li><strong>Confidentiality:</strong> Calls or texts made to helpline numbers (e.g., 1737 or Youthline) are private between you and the respective care provider.</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <footer class="footer-row">
+            LIGHTHOUSEPROJECT 2026©<br>
+            Author: Dannyel Togiatau<br>
+            Contact Information: N/A
+        </footer>
+    </div>
+
+    <script>
+      
+        function showPage(pageName, clickedButton) {
+          
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(view => {
+                view.classList.remove('active');
+            });
+
+         
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+        
+            const selectedView = document.getElementById(`view-${pageName}`);
+            if (selectedView) {
+                selectedView.classList.add('active');
+            }
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
+        }
+
+    
+        let breathingInterval;
+        let isBreathing = false;
+
+        function toggleBreathing() {
+            const circle = document.getElementById('breathCircle');
+            const btn = event.target;
+
+            if (isBreathing) {
+                clearInterval(breathingInterval);
+                circle.className = 'breath-circle';
+                circle.innerText = 'Ready';
+                btn.innerText = 'Start Exercise';
+                isBreathing = false;
+                return;
+            }
+
+            isBreathing = true;
+            btn.innerText = 'Stop Exercise';
+
+            let phase = 0;
+            const runCycle = () => {
+                if (phase === 0) {
+                    circle.innerText = 'Inhale...';
+                    circle.className = 'breath-circle expand';
+                    phase = 1;
+                } else if (phase === 1) {
+                    circle.innerText = 'Hold...';
+                    circle.className = 'breath-circle hold';
+                    phase = 2;
+                } else {
+                    circle.innerText = 'Exhale...';
+                    circle.className = 'breath-circle';
+                    phase = 0;
+                }
+            };
+
+            runCycle();
+            breathingInterval = setInterval(runCycle, 4000);
+        }
+    </script>
+</body>
+</html>
