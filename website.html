@@ -395,7 +395,7 @@
         
         <aside class="left-column">
             <div class="logo-block">
-                <span class="logo-icon">🌅</span>
+                <span class="logo-icon"></span>
                 <h1>Lighthouse Project</h1>
             </div>
             
@@ -458,15 +458,16 @@
                     <h2>Breathing Exercises</h2>
                     <div class="code-zone">
                         <div class="breathing-box">
-                            <h3>Box Breathing (4-4-4 Technique)</h3>
+                            <h3>Box Breathing (4-4-4-4 Technique)</h3>
                             <p>Follow the circle to slow down your heart rate and ease anxiety.</p>
                             <div class="breath-circle" id="breathCircle">Ready</div>
-                            <button class="breath-btn" onclick="toggleBreathing()">Start Exercise</button>
+                            <button class="breath-btn" onclick="toggleBreathing(event)">Start Exercise</button>
+                            <p class="breathing-subtitle" style="margin-top: 15px;">Inhale • Hold • Exhale • Hold — reset your nervous system in minutes.</p>
                         </div>
                     </div>
                 </section>
 
-             
+              
                 <section id="view-after-school" class="page-view standard-page">
                     <h2>Life After School</h2>
                     <div class="code-zone">
@@ -492,7 +493,7 @@
                     </div>
                 </section>
 
-             
+              
                 <section id="view-get-help" class="page-view standard-page">
                     <h2>Get Help Now</h2>
                     <div class="code-zone">
@@ -518,7 +519,7 @@
                     </div>
                 </section>
 
-               
+                
                 <section id="view-privacy" class="page-view standard-page">
                     <h2>Privacy Conditions</h2>
                     <div class="code-zone">
@@ -553,7 +554,7 @@
                 view.classList.remove('active');
             });
 
-         
+          
             const buttons = document.querySelectorAll('.nav-button');
             buttons.forEach(btn => {
                 btn.classList.remove('active');
@@ -573,9 +574,9 @@
         let breathingInterval;
         let isBreathing = false;
 
-        function toggleBreathing() {
+        function toggleBreathing(evt) {
             const circle = document.getElementById('breathCircle');
-            const btn = event.target;
+            const btn = evt ? evt.target : event.target;
 
             if (isBreathing) {
                 clearInterval(breathingInterval);
@@ -599,8 +600,12 @@
                     circle.innerText = 'Hold...';
                     circle.className = 'breath-circle hold';
                     phase = 2;
-                } else {
+                } else if (phase === 2) {
                     circle.innerText = 'Exhale...';
+                    circle.className = 'breath-circle';
+                    phase = 3;
+                } else {
+                    circle.innerText = 'Hold...';
                     circle.className = 'breath-circle';
                     phase = 0;
                 }
