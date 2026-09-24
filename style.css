@@ -142,3 +142,38 @@
             flex-direction: column;
             justify-content: center;
         }
+          .banner-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .helpline-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .action-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 0 10px;
+        }
+
+        .action-link {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: var(--inner-yellow);
+            padding: 15px 30px;
+            border-radius: 20px;
+            box-shadow: none;
+        }
+
+        .bottom-cards-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 20px;
+            flex: 1;
+        }
