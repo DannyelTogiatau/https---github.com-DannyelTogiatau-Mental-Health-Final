@@ -234,3 +234,57 @@
             font-size: 3rem;
             flex-shrink: 0;
         }
+       .standard-page {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 35px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .standard-page h2 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+           .code-zone {
+            background-color: var(--inner-yellow);
+            border-radius: 20px;
+            padding: 30px;
+            flex: 1;
+            border: 2px dashed var(--font-color);
+        }
+          .breathing-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            padding: 20px;
+        }
+
+        .breath-circle {
+            width: 160px;
+            height: 160px;
+            background-color: var(--panel-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin: 25px 0;
+        }
+
+        .breath-btn {
+            background-color: var(--panel-gold);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+
