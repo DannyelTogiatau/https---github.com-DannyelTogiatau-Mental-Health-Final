@@ -63,5 +63,16 @@
             flex-direction: column;
             gap: 14px;
         }
+             .nav-button {
+            background-color: var(--inner-yellow);
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-align: left;
+            cursor: pointer;
+            box-shadow: none;
+        }
 
-   
+      
