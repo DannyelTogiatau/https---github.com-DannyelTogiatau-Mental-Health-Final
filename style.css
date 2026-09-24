@@ -97,3 +97,48 @@
             font-size: 4rem;
             margin-bottom: 15px;
         }
+            .right-column {
+            grid-column: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .quote-bar {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 18px 25px;
+            text-align: center;
+            font-size: 1.35rem;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .views-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-view {
+            display: none !important;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .page-view.active {
+            display: flex !important;
+        }
+
+        .banner-block {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
