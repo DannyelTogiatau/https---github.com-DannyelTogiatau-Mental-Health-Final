@@ -75,4 +75,25 @@
             box-shadow: none;
         }
 
-      
+            .nav-button:hover, .nav-button.active {
+            background-color: var(--panel-gold);
+        }
+
+        .sidebar-image-placeholder {
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            flex-grow: 1;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .sidebar-image-placeholder span {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
