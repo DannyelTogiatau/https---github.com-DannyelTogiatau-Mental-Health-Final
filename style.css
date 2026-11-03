@@ -1,10 +1,10 @@
-        :root {
+          :root {
             --outer-orange: #FF9900;      
             --inner-yellow: #FFCC00;    
             --panel-gold: #EA9900;      
             --font-color: #261600;
         }
-
+        
         * {
             box-sizing: border-box;
             margin: 0;
@@ -34,7 +34,7 @@
             gap: 25px;
             box-shadow: none;
         }
-             .left-column {
+         .left-column {
             grid-column: 1;
             display: flex;
             flex-direction: column;
@@ -63,7 +63,8 @@
             flex-direction: column;
             gap: 14px;
         }
-             .nav-button {
+
+        .nav-button {
             background-color: var(--inner-yellow);
             border: none;
             padding: 15px 20px;
@@ -75,7 +76,7 @@
             box-shadow: none;
         }
 
-            .nav-button:hover, .nav-button.active {
+        .nav-button:hover, .nav-button.active {
             background-color: var(--panel-gold);
         }
 
@@ -97,7 +98,8 @@
             font-size: 4rem;
             margin-bottom: 15px;
         }
-            .right-column {
+
+        .right-column {
             grid-column: 2;
             display: flex;
             flex-direction: column;
@@ -142,7 +144,8 @@
             flex-direction: column;
             justify-content: center;
         }
-          .banner-title {
+
+        .banner-title {
             font-size: 2.8rem;
             font-weight: bold;
             margin-bottom: 15px;
@@ -177,7 +180,8 @@
             gap: 20px;
             flex: 1;
         }
-          .left-info-card {
+
+        .left-info-card {
             background-color: var(--panel-gold);
             border-radius: 25px;
             padding: 25px 30px;
@@ -234,7 +238,8 @@
             font-size: 3rem;
             flex-shrink: 0;
         }
-       .standard-page {
+
+        .standard-page {
             background-color: var(--panel-gold);
             border-radius: 25px;
             padding: 35px;
@@ -247,14 +252,16 @@
             font-size: 2.4rem;
             margin-bottom: 20px;
         }
-           .code-zone {
+
+        .code-zone {
             background-color: var(--inner-yellow);
             border-radius: 20px;
             padding: 30px;
             flex: 1;
             border: 2px dashed var(--font-color);
         }
-          .breathing-box {
+
+        .breathing-box {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -287,4 +294,72 @@
             font-size: 1.1rem;
         }
 
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
 
+        .info-box {
+            background-color: var(--panel-gold);
+            padding: 20px;
+            border-radius: 18px;
+        }
+
+        .info-box h4 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-list li {
+            background-color: var(--panel-gold);
+            margin-bottom: 15px;
+            padding: 16px 22px;
+            border-radius: 18px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .contact-list span {
+            display: block;
+            font-weight: normal;
+            font-size: 1rem;
+            margin-top: 6px;
+        }
+
+        .footer-row {
+            grid-column: 1 / 3;
+            background-color: var(--panel-gold);
+            border-radius: 25px;
+            padding: 18px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .website-frame {
+                grid-template-columns: 1fr;
+            }
+            .left-column, .right-column, .footer-row {
+                grid-column: 1;
+            }
+            .bottom-cards-row, .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }.logo-block img {
+    width: 50px;
+    height: auto;
+    flex-shrink: 0;
+}
